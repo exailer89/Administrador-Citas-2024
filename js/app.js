@@ -1,5 +1,5 @@
 // Selectores
-const nombreInput = document.querySelector('#paciente');
+const pacienteInput = document.querySelector('#paciente');
 const propietarioInput = document.querySelector('#propietario');
 const emailInput = document.querySelector('#email');
 const fechaInput = document.querySelector('#fecha');
@@ -14,4 +14,7 @@ const citaObj = {
     sintomas: ''
 }
 
-console.log(citaObj);
+// Eventos
+pacienteInput.addEventListener('change', (event) => {
+    citaObj.paciente = e.target.value; // e = evento | tarjet = campo donde estamos escribiendo | value = valor del campo donde estamos escribiendo.
+});
