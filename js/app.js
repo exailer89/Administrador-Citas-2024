@@ -16,5 +16,26 @@ const citaObj = {
 
 // Eventos
 pacienteInput.addEventListener('change', (event) => {
-    citaObj.paciente = e.target.value; // e = evento | tarjet = campo donde estamos escribiendo | value = valor del campo donde estamos escribiendo.
+    citaObj[event.target.name] = event.target.value; // Con event.target.name tomamos el name del target donde nos encontramos.
+    console.log(citaObj);
+});
+
+propietarioInput.addEventListener('change', (event) => {
+    citaObj[event.target.name] = event.target.value; // Con event.target.name tomamos el name del target donde nos encontramos.
+    console.log(citaObj);
+});
+
+emailInput.addEventListener('change', (event) => {
+    citaObj[event.target.name] = event.target.value; // Con event.target.name tomamos el name del target donde nos encontramos.
+    console.log(citaObj);
+});
+
+fechaInput.addEventListener('change', (event) => {
+    citaObj[event.target.name] = event.target.value; // Con event.target.name tomamos el name del target donde nos encontramos.
+    console.log(citaObj);
+});
+
+sintomas.addEventListener('change', (event) => {
+    citaObj[event.target.name] = event.target.value; // Con event.target.name tomamos el name del target donde nos encontramos.
+    console.log(citaObj);
 });
