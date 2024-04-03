@@ -15,27 +15,13 @@ const citaObj = {
 }
 
 // Eventos
-pacienteInput.addEventListener('change', (event) => {
-    citaObj[event.target.name] = event.target.value; // Con event.target.name tomamos el name del target donde nos encontramos.
-    console.log(citaObj);
-});
+pacienteInput.addEventListener('change', datosCita);
+propietarioInput.addEventListener('change', datosCita);
+emailInput.addEventListener('change', datosCita);
+fechaInput.addEventListener('change', datosCita);
+sintomas.addEventListener('change', datosCita);
 
-propietarioInput.addEventListener('change', (event) => {
-    citaObj[event.target.name] = event.target.value; // Con event.target.name tomamos el name del target donde nos encontramos.
+function datosCita(e) {
+    citaObj[e.target.name] = e.target.value; // Con e.target.name tomamos el name del target donde nos encontramos.
     console.log(citaObj);
-});
-
-emailInput.addEventListener('change', (event) => {
-    citaObj[event.target.name] = event.target.value; // Con event.target.name tomamos el name del target donde nos encontramos.
-    console.log(citaObj);
-});
-
-fechaInput.addEventListener('change', (event) => {
-    citaObj[event.target.name] = event.target.value; // Con event.target.name tomamos el name del target donde nos encontramos.
-    console.log(citaObj);
-});
-
-sintomas.addEventListener('change', (event) => {
-    citaObj[event.target.name] = event.target.value; // Con event.target.name tomamos el name del target donde nos encontramos.
-    console.log(citaObj);
-});
+}
