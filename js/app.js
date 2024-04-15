@@ -28,7 +28,8 @@ function datosCita(e) {
     console.log(citaObj);
 }
 
-function submitCita(e) {
+// Primera forma de validar formularios
+/* function submitCita(e) {
     e.preventDefault();
     
     const {paciente, propietario, email, fecha, sintomas} = citaObj;
@@ -37,4 +38,15 @@ function submitCita(e) {
         console.log('Todos los campos son obligatorios');
         return;
     }
+} */
+
+// Simplificar la validación del formulario
+function submitCita(e) {
+    e.preventDefault();
+
+    if (Object.values(citaObj).some(valor => valor.trim() === '')) { // Object.values() nos permite traer todos los valores de un objeto.
+        console.log('Todos los campos son obligatorios');
+        return
+    }
+
 }
