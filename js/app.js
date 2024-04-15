@@ -14,6 +14,7 @@ fechaInput.addEventListener('change', datosCita);
 sintomas.addEventListener('change', datosCita);
 formulario.addEventListener('submit', submitCita);
 
+
 // Objeto de Cita
 const citaObj = {
     paciente: '',
@@ -23,35 +24,6 @@ const citaObj = {
     sintomas: ''
 }
 
-function datosCita(e) {
-    citaObj[e.target.name] = e.target.value; // Con e.target.name tomamos el name del target donde nos encontramos.
-    console.log(citaObj);
-}
-
-// Primera forma de validar formularios
-/* function submitCita(e) {
-    e.preventDefault();
-    
-    const {paciente, propietario, email, fecha, sintomas} = citaObj;
-
-    if (paciente.trim() === '' || propietario.trim() === '' || email.trim() === '') {
-        console.log('Todos los campos son obligatorios');
-        return;
-    }
-} */
-
-// Simplificar la validación del formulario
-function submitCita(e) {
-    e.preventDefault();
-
-    if (Object.values(citaObj).some(valor => valor.trim() === '')) { // Object.values() nos permite traer todos los valores de un objeto.
-        new Notificacion({
-            texto: 'Todos los campos son obligatorios',
-            tipo: 'error'
-        });
-        return
-    }
-}
 
 class Notificacion {
     constructor({texto, tipo}) {
@@ -87,4 +59,51 @@ class Notificacion {
             alerta.remove();
         }, 3000)
     }
+}
+
+class AdminCitas {
+    constructor() {
+        this.citas = [];
+    }
+    
+    agregar(cita) {
+        this.citas = [...this.citas, cita];
+
+        console.log(this.citas);
+    }
+}
+
+
+function datosCita(e) {
+    citaObj[e.target.name] = e.target.value; // Con e.target.name tomamos el name del target donde nos encontramos.
+    console.log(citaObj);
+}
+
+// Primera forma de validar formularios
+/* function submitCita(e) {
+    e.preventDefault();
+    
+    const {paciente, propietario, email, fecha, sintomas} = citaObj;
+
+    if (paciente.trim() === '' || propietario.trim() === '' || email.trim() === '') {
+        console.log('Todos los campos son obligatorios');
+        return;
+    }
+} */
+
+const citas = new AdminCitas();
+
+// Simplificar la validación del formulario
+function submitCita(e) {
+    e.preventDefault();
+
+    if (Object.values(citaObj).some(valor => valor.trim() === '')) { // Object.values() nos permite traer todos los valores de un objeto.
+        new Notificacion({
+            texto: 'Todos los campos son obligatorios',
+            tipo: 'error'
+        });
+        return
+    }
+
+    citas.agregar(citaObj);
 }
